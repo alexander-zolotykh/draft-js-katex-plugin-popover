@@ -1,7 +1,7 @@
 {
   "name": "draft-js-katex-plugin-popover",
   "description": "Katex Plugin for DraftJS with popover",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "author": {
     "name": "alex.zolotyh",
     "email": "alex.zolotyh@omega-r.com"
