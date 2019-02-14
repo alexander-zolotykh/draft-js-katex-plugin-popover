@@ -20,6 +20,8 @@ export default class InsertKatexButton extends Component {
 
   onClick = () => {
     const { store, translator, initialValue } = this.props;
+    console.log({initialValue});
+
     const editorState = store.getEditorState();
     store.setEditorState(insertTeXBlock(editorState, translator, initialValue));
   };

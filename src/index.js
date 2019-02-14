@@ -1,7 +1,12 @@
-import { EditorState } from 'draft-js';
+import {
+  EditorState
+} from 'draft-js';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import TeXBlock from './components/TeXBlock';
-import removeTeXBlock from './modifiers/removeTeXBlock';
+import {
+  insertTeXBlock,
+  removeTeXBlock
+} from './modifiers';
 import InsertButton from './components/InsertKatexButton';
 
 import styles from './styles.css';
@@ -51,8 +56,18 @@ export default (config = {}) => {
     MathInput: config.MathInput,
   });
 
+  const insertFormula = () => {
+    const editorState = store.getEditorState();
+    store.setEditorState(insertTeXBlock(editorState, translator, null));
+  };
+
   return {
-    initialize: ({ getEditorState, setEditorState, getReadOnly, setReadOnly }) => {
+    initialize: ({
+      getEditorState,
+      setEditorState,
+      getReadOnly,
+      setReadOnly
+    }) => {
       store.getEditorState = getEditorState;
       store.setEditorState = setEditorState;
       store.getReadOnly = getReadOnly;
@@ -107,5 +122,6 @@ export default (config = {}) => {
       translator,
       defaultContent: insertContent,
     }),
+    insertFormula,
   };
 };
